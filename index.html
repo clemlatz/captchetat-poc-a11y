@@ -1,0 +1,118 @@
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Captchetat POC A11Y</title>
+  <link rel="stylesheet" href="/design-system/dsfr.main.css"/>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    main {
+      margin: auto;
+      width: 526px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <form class="fr-py-5w" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input type="hidden"
+                                                                                                           name="authenticity_token"
+                                                                                                           value="VG7B0CnGX94a0X8EUNAOKz6yozxbvuf_oylexCyIgQW6CKuXki8Bey1KmR2GwKHvC4ngB78Tnkf7m-03_2RhgA"
+                                                                                                           autocomplete="off">
+    <h1 class="fr-h2">Inscription</h1>
+    <div class="france-connect-login">
+
+
+      <fieldset aria-labelledby="new-account-legend" class="fr-mb-0 fr-fieldset">
+        <div class="fr-fieldset__element">
+          <p class="fr-text--sm">Les champs suivis d’un astérisque (
+            <svg aria-label="obligatoire" class="icon mandatory" height="10" role="img" viewBox="0 0 1200 1200"
+                 width="10"
+                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><desc>obligatoire</desc>
+              <path
+                  d="M489.838 29.354v443.603L68.032 335.894 0 545.285l421.829 137.086-260.743 358.876 178.219 129.398L600.048 811.84l260.673 358.806 178.146-129.398-260.766-358.783L1200 545.379l-68.032-209.403-421.899 137.07V29.443H489.84l-.002-.089z"></path></svg>
+            ) sont obligatoires.
+          </p>
+        </div>
+        <div class="fr-fieldset__element">
+          <div class="fr-input-group" data-controller="email-input" data-email-input-url-value="/check_email"><label
+              class="fr-label" for="user_email">Adresse électronique
+            <svg aria-label="obligatoire" class="icon mandatory" height="10" role="img" viewBox="0 0 1200 1200"
+                 width="10"
+                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<desc>obligatoire</desc>
+              <path
+                  d="M489.838 29.354v443.603L68.032 335.894 0 545.285l421.829 137.086-260.743 358.876 178.219 129.398L600.048 811.84l260.673 358.806 178.146-129.398-260.766-358.783L1200 545.379l-68.032-209.403-421.899 137.07V29.443H489.84l-.002-.089z"></path>
+</svg>
+
+            <span class="fr-hint-text">Format attendu : adresse@mail.com</span>
+          </label><input autocomplete="email" autofocus="autofocus" class="fr-input fr-mb-0" required="required"
+                         data-action="blur->email-input#checkEmail" data-email-input-target="input" data-controller=""
+                         type="email" value="" name="user[email]" id="user_email">
+          </div>
+        </div>
+        <div class="fr-fieldset__element">
+          <div class="fr-input-group fr-password" data-fr-js-password="true"><label class="fr-label fr-password__label"
+                                                                                    for="user_password"
+                                                                                    data-fr-js-password-label="true"
+                                                                                    style="padding-right: 6rem;">Mot de
+            passe
+            <svg aria-label="obligatoire" class="icon mandatory" height="10" role="img" viewBox="0 0 1200 1200"
+                 width="10"
+                 xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<desc>obligatoire</desc>
+              <path
+                  d="M489.838 29.354v443.603L68.032 335.894 0 545.285l421.829 137.086-260.743 358.876 178.219 129.398L600.048 811.84l260.673 358.806 178.146-129.398-260.766-358.783L1200 545.379l-68.032-209.403-421.899 137.07V29.443H489.84l-.002-.089z"></path>
+</svg>
+
+          </label><input autocomplete="current-password" data-email-input-target="next"
+                         class="fr-password__input fr-input fr-mb-0" required="required" data-controller=""
+                         type="password" name="user[password]" id="user_password" data-fr-js-password-input="true">
+            <div class="fr-password__checkbox fr-checkbox-group fr-checkbox-group--sm">
+              <input aria-label="Afficher le mot de passe" id="password_show_password_user" type="checkbox"
+                     data-fr-js-checkbox-input="true" data-fr-js-password-toggle="true">
+              <label class="fr--password__checkbox fr-label" for="password_show_password_user">Afficher</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="fr-fieldset__element">
+          <p>Reproduire la suite de caractères*</p>
+          <img src="captcha-example.png" alt="Exemple de CAPTCHA">
+          <button aria-label="Énoncer le code du captcha">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="25" height="25" viewBox="0 0 75 75" id="iconSound">
+              <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z"
+                    style="stroke:#111;stroke-width:5;stroke-linejoin:round;fill:#111;"></path>
+              <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6"
+                    style="fill:none;stroke:#111;stroke-width:5;stroke-linecap:round"></path>
+            </svg>
+          </button>
+
+
+          <button aria-label="Recharger le captcha">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17 20" fill="none" id="iconReload">
+              <path
+                  d="M9.00003 4.0001C11.1 4.0001 13.1 4.8001 14.6 6.3001C17.7 9.4001 17.7 14.5001 14.6 17.6001C12.8 19.5001 10.3 20.2001 7.90003 19.9001L8.40003 17.9001C10.1 18.1001 11.9 17.5001 13.2 16.2001C15.5 13.9001 15.5 10.1001 13.2 7.7001C12.1 6.6001 10.5 6.0001 9.00003 6.0001V10.6001L4.00003 5.6001L9.00003 0.600098V4.0001ZM3.30003 17.6001C0.700029 15.0001 0.300029 11.0001 2.10003 7.9001L3.60003 9.4001C2.50003 11.6001 2.90003 14.4001 4.80003 16.2001C5.30003 16.7001 5.90003 17.1001 6.60003 17.4001L6.00003 19.4001C5.00003 19.0001 4.10003 18.4001 3.30003 17.6001V17.6001Z"
+                  fill="black"></path>
+            </svg>
+          </button>
+          <div>
+            <input class="fr-input" type="text" aria-label="Saisir le captcha" placeholder="Saisir le captcha"/>
+          </div>
+        </div>
+
+        <div class="fr-fieldset__element">
+          <div class="fr-btns-group"><input type="submit" name="commit" value="Se connecter" class="fr-btn"
+                                            data-disable-with="Se connecter"></div>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+</main>
+
+<script type="module" href="/design-system/dsfr.module.min.js" ></script>
+<script type="text/javascript" nomodule href="/design-system/dsfr.nomodule.min.js" ></script>
+</body>
+</html>
