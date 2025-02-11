@@ -61,7 +61,7 @@
         </label>
         <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
         <img src="captcha-example.png" alt="Exemple de CAPTCHA">
-        <button id="audio-button" type="button" aria-label="Lire du code du captcha">
+        <button id="audio-button" type="button" aria-label="Lire le code du captcha">
           <img src="/icons/play.png" id="audio-button-image" alt="" width="24">
         </button>
 
@@ -140,12 +140,12 @@
       if (audioPlaying) {
         audio.pause();
         audioPlaying = false;
-        audioButton.setAttribute("aria-label", "Mettre en pause la lecture");
+        audioButton.setAttribute("aria-label", "Lire le code du captcha");
         audioButtonImage.src = '/icons/play.png';
       } else {
         audio.play();
         audioPlaying = true;
-        audioButton.setAttribute("aria-label", "Lire le code du captcha");
+        audioButton.setAttribute("aria-label", "Mettre en pause la lecture");
         audioButtonImage.src = '/icons/pause.png';
       }
     });
