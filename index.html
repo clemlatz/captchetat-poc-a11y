@@ -57,8 +57,9 @@
           Reproduire la suite de caractères
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
+        <audio id="audio-captcha" src="/captcha-example.mp3" loop="true"></audio>
         <img src="captcha-example.png" alt="Exemple de CAPTCHA">
-        <button type="button" aria-label="Énoncer le code du captcha">
+        <button id="audio-button" type="button" aria-label="Énoncer le code du captcha">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="25" height="25" viewBox="0 0 75 75"
                id="iconSound">
             <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z"
@@ -77,7 +78,8 @@
           </svg>
         </button>
         <div class="fr-mb-1w">
-          <input class="fr-input" type="text" aria-label="Saisir le captcha" placeholder="Saisir le captcha"/>
+          <input class="fr-input" type="text" aria-label="Saisir le captcha"
+                 placeholder="Saisir le captcha"/>
         </div>
       </div>
 
@@ -91,5 +93,26 @@
 
 <script type="module" href="/design-system/dsfr.module.min.js"></script>
 <script type="text/javascript" nomodule href="/design-system/dsfr.nomodule.min.js"></script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('audio-captcha');
+    const audioButton = document.getElementById('audio-button');
+    let audioPlaying = false;
+
+    audioButton.addEventListener('click', () => {
+      if (audioPlaying) {
+        audio.pause();
+        audioPlaying = false;
+      } else {
+        audio.play();
+        audioPlaying = true;
+      }
+    });
+  });
+
+</script>
+
 </body>
 </html>
