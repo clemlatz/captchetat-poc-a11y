@@ -57,16 +57,10 @@
           Reproduire la suite de caractères
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
-        <audio id="audio-captcha" src="/captcha-example.mp3" loop="true"></audio>
+        <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
         <img src="captcha-example.png" alt="Exemple de CAPTCHA">
-        <button id="audio-button" type="button" aria-label="Énoncer le code du captcha">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="25" height="25" viewBox="0 0 75 75"
-               id="iconSound">
-            <path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z"
-                  style="stroke:#111;stroke-width:5;stroke-linejoin:round;fill:#111;"></path>
-            <path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6"
-                  style="fill:none;stroke:#111;stroke-width:5;stroke-linecap:round"></path>
-          </svg>
+        <button id="audio-button" type="button" aria-label="Lire du code du captcha">
+          <img src="/icons/play.png" id="audio-button-image" alt="" width="24">
         </button>
 
         <button type="button" aria-label="Recharger le captcha">
@@ -99,15 +93,21 @@
   document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('audio-captcha');
     const audioButton = document.getElementById('audio-button');
+    const audioButtonImage = document.getElementById('audio-button-image');
+
     let audioPlaying = false;
 
     audioButton.addEventListener('click', () => {
       if (audioPlaying) {
         audio.pause();
         audioPlaying = false;
+        audioButton.setAttribute("aria-label", "Mettre en pause la lecture");
+        audioButtonImage.src = '/icons/play.png';
       } else {
         audio.play();
         audioPlaying = true;
+        audioButton.setAttribute("aria-label", "Lire le code du captcha");
+        audioButtonImage.src = '/icons/pause.png';
       }
     });
   });
