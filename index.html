@@ -52,7 +52,9 @@
         </div>
       </div>
 
-      <div class="fr-fieldset__element">
+      <button type="button" id="switch-mode-button" class="fr-btn">Changer de mode</button>
+
+      <div class="fr-fieldset__element" id="captcha-image">
         <label class="fr-label">
           Reproduire la suite de caractères
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
@@ -77,6 +79,16 @@
         </div>
       </div>
 
+      <div class="fr-fieldset__element" id="captcha-question">
+        <label class="fr-label" for="captcha-question-input">
+          En quel est saison est le mois d'avril ?
+          <img src="/mandatory-icon.svg" alt="obligatoire"/>
+        </label>
+        <div class="fr-mb-1w">
+          <input class="fr-input" type="text" id="captcha-question-input"/>
+        </div>
+      </div>
+
       <div class="fr-fieldset__element">
         <div class="fr-btns-group"><input type="submit" name="commit" value="Se connecter" class="fr-btn"
                                           data-disable-with="Se connecter"></div>
@@ -90,11 +102,38 @@
 
 <script>
 
+  function switchToImageMode() {
+    const captchaImage = document.getElementById('captcha-image');
+    const captchaQuestion = document.getElementById('captcha-question');
+    captchaImage.style.display = "block";
+    captchaQuestion.style.display = "none";
+  }
+
+  function switchToQuestionMode() {
+    const captchaImage = document.getElementById('captcha-image');
+    const captchaQuestion = document.getElementById('captcha-question');
+    captchaImage.style.display = "none";
+    captchaQuestion.style.display = "block";
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    let captchaMode = "image";
+
+    switchToImageMode();
+    const switchModeButton = document.getElementById('switch-mode-button');
+    switchModeButton.addEventListener('click', () => {
+      if (captchaMode === "question") {
+        switchToImageMode();
+        captchaMode = "image";
+      } else {
+        switchToQuestionMode();
+        captchaMode = "question";
+      }
+    });
+
     const audio = document.getElementById('audio-captcha');
     const audioButton = document.getElementById('audio-button');
     const audioButtonImage = document.getElementById('audio-button-image');
-
     let audioPlaying = false;
 
     audioButton.addEventListener('click', () => {
