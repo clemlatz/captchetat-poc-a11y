@@ -17,7 +17,7 @@
 </head>
 <body>
 <main>
-  <form class="fr-py-5w" action="/users/sign_in" accept-charset="UTF-8" method="post">
+  <form class="fr-py-5w" id="subscribe-form" action="/users/sign_in" accept-charset="UTF-8" method="post">
     <h1 class="fr-h1">Inscription</h1>
 
     <fieldset aria-labelledby="new-account-legend" class="fr-mb-0 fr-fieldset">
@@ -74,7 +74,7 @@
           </svg>
         </button>
         <div class="fr-mb-1w">
-          <input class="fr-input" type="text" aria-label="Saisir le captcha"
+          <input class="fr-input" id="captcha-image-input" type="text" aria-label="Saisir le captcha"
                  placeholder="Saisir le captcha"/>
         </div>
       </div>
@@ -116,8 +116,8 @@
     captchaQuestion.style.display = "block";
   }
 
+  let captchaMode = "image";
   document.addEventListener('DOMContentLoaded', () => {
-    let captchaMode = "image";
 
     switchToImageMode();
     const switchModeButton = document.getElementById('switch-mode-button');
@@ -149,6 +149,28 @@
         audioButtonImage.src = '/icons/pause.png';
       }
     });
+  });
+
+  const  subscribeForm = document.getElementById('subscribe-form');
+
+  subscribeForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const captchaInput = captchaMode === "image" ?
+      document.getElementById('captcha-image-input') :
+      document.getElementById('captcha-question-input');
+    const correctAnswer = captchaMode === "image" ? "4J4BRC" : "PRINTEMPS";
+
+    if (captchaInput.value === "") {
+      alert('Veuillez saisir le captcha');
+      return;
+    }
+
+    if (captchaInput.value.toUpperCase() !== correctAnswer) {
+      alert('Le captcha est incorrect');
+      return;
+    }
+
+    alert('Formulaire soumis');
   });
 
 </script>
