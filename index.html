@@ -20,6 +20,16 @@
       display: flex;
       gap: 4px;
     }
+
+    .captcha-and-buttons {
+      display: flex;
+      margin-bottom: 8px;
+    }
+
+    .captcha-buttons {
+      display: flex;
+      flex-direction: column;
+    }
   </style>
 </head>
 <body>
@@ -60,35 +70,41 @@
       </div>
 
       <div class="fr-fieldset__element" id="captcha-image">
+
         <label class="fr-label fr-mb-1w" for="captcha-image-input">
           Reproduire la suite de caractères du captcha
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
         <audio id="audio-captcha" src="/captcha-example.mp3"></audio>
-        <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
 
-        <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha"
-                title="Lire en boucle le code du captcha">
-          <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
-        </button>
+        <div class="captcha-and-buttons">
+          <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
 
-        <button type="button" id="refreshCaptcha" aria-label="Générer un nouveau captcha"
-                title="Générer un nouveau captcha">
-          <img src="/icons/refresh.svg" alt="" width="24">
-        </button>
+          <div class="captcha-buttons">
+            <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha"
+                    title="Lire en boucle le code du captcha">
+              <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
+            </button>
 
-        <button type="button" id="switch-mode-button" aria-label="Afficher un captcha simplifié"
-                title="Afficher un captcha simplifié">
-          <img src="/icons/simplify.svg" alt="" width="24">
-        </button>
+            <button type="button" id="refreshCaptcha" aria-label="Générer un nouveau captcha"
+                    title="Générer un nouveau captcha">
+              <img src="/icons/refresh.svg" alt="" width="24">
+            </button>
+
+            <button type="button" id="switch-mode-button" aria-label="Afficher un captcha simplifié"
+                    title="Afficher un captcha simplifié">
+              <img src="/icons/simplify.svg" alt="" width="24">
+            </button>
+          </div>
+        </div>
 
         <div class="fr-mb-1w">
-          <input class="fr-input" id="captcha-image-input" type="text"  style="text-transform: uppercase;"/>
+          <input class="fr-input" id="captcha-image-input" type="text" style="text-transform: uppercase;"/>
         </div>
 
         <div id="error-message" class="error-message" style="display: none;">
           <p class="fr-text--sm fr-text--error error-message__text">
-            <img src="/icons/error.svg" alt="" />
+            <img src="/icons/error.svg" alt=""/>
             <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
           </p>
 
@@ -126,11 +142,11 @@
 
 <footer>
   <p class="fr-text--xs" style="text-align: center">
-    Prototype réalisé dans le cadre du<br />
+    Prototype réalisé dans le cadre du<br/>
     <a href="https://www.numerique.gouv.fr/agenda/hackathon-sur-laccessibilite-numerique-captchas-et-pdf-pour-tous/">
       Hackathon Accessibilité numérique
-    </a><br />
-    organisé par la DINUM.<br />
+    </a><br/>
+    organisé par la DINUM.<br/>
   </p>
 
   <p class="fr-text--xs" style="text-align: center">
@@ -164,6 +180,7 @@
   const btnRefresh = document.getElementById('refreshCaptcha');
   const imgCaptcha = document.querySelector('#captcha-images-img');
   let HistoryIndexCaptcha = 0;
+
   function switchStyleImage() {
 
     const index = Math.floor(Math.random() * 7);
