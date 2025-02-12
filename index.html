@@ -13,6 +13,13 @@
       margin: auto;
       width: 526px;
     }
+
+    .error-message__text {
+      align-items: center;
+      color: #CE0500;
+      display: flex;
+      gap: 4px;
+    }
   </style>
 </head>
 <body>
@@ -73,6 +80,13 @@
 
         <div class="fr-mb-1w">
           <input class="fr-input" id="captcha-image-input" type="text"  style="text-transform: uppercase;"/>
+        </div>
+
+        <div id="error-message" class="error-message" style="display: none;">
+          <p class="fr-text--sm fr-text--error error-message__text">
+            <img src="/icons/error.svg" alt="" />
+            <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
+          </p>
         </div>
       </div>
 
@@ -174,13 +188,16 @@
       document.getElementById('captcha-question-input');
     const correctAnswer = captchaMode === "image" ? "4J4BRC" : "PRINTEMPS";
 
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.style.display = "none";
+
     if (captchaInput.value === "") {
-      alert('Veuillez saisir le captcha');
+      errorMessage.style.display = "block";
       return;
     }
 
     if (captchaInput.value.toUpperCase() !== correctAnswer) {
-      alert('Le captcha est incorrect');
+      errorMessage.style.display = "block";
       return;
     }
 
