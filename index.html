@@ -37,99 +37,98 @@
   <form class="fr-py-5w" id="subscribe-form" action="/users/sign_in" accept-charset="UTF-8" method="post">
     <h1 class="fr-h1">Inscription</h1>
 
-    <fieldset aria-labelledby="new-account-legend" class="fr-mb-0 fr-fieldset">
-      <div class="fr-fieldset__element">
-        <p class="fr-text--sm">
-          Les champs suivis d’un astérisque (<img src="/mandatory-icon.svg" alt="obligatoire"/>) sont obligatoires.
-        </p>
+    <div class="fr-fieldset__element">
+      <p class="fr-text--sm">
+        Les champs suivis d’un astérisque (<img src="/mandatory-icon.svg" alt="obligatoire"/>) sont obligatoires.
+      </p>
+    </div>
+    <div class="fr-fieldset__element">
+      <div class="fr-input-group" data-controller="email-input" data-email-input-url-value="/check_email">
+        <label class="fr-label" for="user_email">
+          Adresse électronique <img src="/mandatory-icon.svg" alt="obligatoire"/>
+          <span class="fr-hint-text">Format attendu : adresse@mail.com</span>
+        </label>
+        <input autocomplete="email" class="fr-input fr-mb-0" required="required"
+               data-action="blur->email-input#checkEmail" data-email-input-target="input" data-controller=""
+               type="email" value="test@test.com" name="user[email]" id="user_email">
       </div>
-      <div class="fr-fieldset__element">
-        <div class="fr-input-group" data-controller="email-input" data-email-input-url-value="/check_email">
-          <label class="fr-label" for="user_email">
-            Adresse électronique <img src="/mandatory-icon.svg" alt="obligatoire"/>
-            <span class="fr-hint-text">Format attendu : adresse@mail.com</span>
-          </label>
-          <input autocomplete="email" class="fr-input fr-mb-0" required="required"
-                 data-action="blur->email-input#checkEmail" data-email-input-target="input" data-controller=""
-                 type="email" value="test@test.com" name="user[email]" id="user_email">
-        </div>
-      </div>
-      <div class="fr-fieldset__element">
-        <div class="fr-input-group fr-password" data-fr-js-password="true">
-          <label class="fr-label fr-password__label"
-                 for="user_password"
-                 data-fr-js-password-label="true"
-                 style="padding-right: 6rem;">
-            Mot de passe
-            <img src="/mandatory-icon.svg" alt="obligatoire"/>
-          </label>
-          <input autocomplete="current-password" data-email-input-target="next"
-                 class="fr-password__input fr-input fr-mb-0" required="required" data-controller=""
-                 type="password" name="user[password]" id="user_password" data-fr-js-password-input="true" value="123456">
-        </div>
-      </div>
-
-      <div class="fr-fieldset__element" id="captcha-image">
-        <label class="fr-label fr-mb-1w" for="captcha-image-input">
-          Reproduire la suite de caractères du captcha
+    </div>
+    <div class="fr-fieldset__element">
+      <div class="fr-input-group fr-password" data-fr-js-password="true">
+        <label class="fr-label fr-password__label"
+               for="user_password"
+               data-fr-js-password-label="true"
+               style="padding-right: 6rem;">
+          Mot de passe
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
-        <audio id="audio-captcha" src="/captcha-example.mp3"></audio>
+        <input autocomplete="current-password" data-email-input-target="next"
+               class="fr-password__input fr-input fr-mb-0" required="required" data-controller=""
+               type="password" name="user[password]" id="user_password" data-fr-js-password-input="true" value="123456">
+      </div>
+    </div>
 
-        <div class="captcha-and-buttons">
-          <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
-          <div class="captcha-buttons">
-            <button type="button" id="switch-mode-button" aria-label="Afficher un captcha simplifié"
-                    title="Afficher un captcha simplifié">
-              <img src="/icons/simplify.svg" alt="" width="24">
-            </button>
+    <div class="fr-fieldset__element" id="captcha-image">
+      <label class="fr-label fr-mb-1w" for="captcha-image-input">
+        Reproduire la suite de caractères du captcha
+        <img src="/mandatory-icon.svg" alt="obligatoire"/>
+      </label>
+      <audio id="audio-captcha" src="/captcha-example.mp3"></audio>
 
-            <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha"
-                    title="Lire en boucle le code du captcha">
-              <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
-            </button>
+      <div class="captcha-and-buttons">
+        <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
+        <div class="captcha-buttons">
+          <button type="button" id="switch-mode-button" aria-label="Afficher un captcha simplifié"
+                  title="Afficher un captcha simplifié">
+            <img src="/icons/simplify.svg" alt="" width="24">
+          </button>
 
-            <button type="button" id="refreshCaptcha" aria-label="Générer un nouveau captcha"
-                    title="Générer un nouveau captcha">
-              <img src="/icons/refresh.svg" alt="" width="24">
-            </button>
-          </div>
-        </div>
+          <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha"
+                  title="Lire en boucle le code du captcha">
+            <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
+          </button>
 
-        <div class="fr-mb-1w">
-          <input class="fr-input" id="captcha-image-input" type="text" style="text-transform: uppercase;" aria-describedby="error-message-text"/>
-        </div>
-
-        <div id="error-message" class="error-message" style="display: none;">
-          <p class="fr-text--sm fr-text--error error-message__text" id="error-message-text">
-            <img src="/icons/error.svg" alt=""/>
-            <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
-          </p>
-
-          <button type="button" class="fr-btn--tertiary" id="switch-to-question-mode-button">
-            Afficher le captcha simplifié
+          <button type="button" id="refreshCaptcha" aria-label="Générer un nouveau captcha"
+                  title="Générer un nouveau captcha">
+            <img src="/icons/refresh.svg" alt="" width="24">
           </button>
         </div>
       </div>
 
-      <div class="fr-fieldset__element" id="captcha-question">
-        <label class="fr-label" for="captcha-question-input">
-          Quelle est la saison du mois d'avril en Allemagne ?
-          <img src="/mandatory-icon.svg" alt="obligatoire"/>
-        </label>
-        <input class="fr-input" type="text" id="captcha-question-input" title="Saisir la réponse"/>
+      <div class="fr-mb-1w">
+        <input class="fr-input" id="captcha-image-input" type="text" style="text-transform: uppercase;"
+               aria-describedby="error-message-text"/>
+      </div>
 
-        <button type="button" class="fr-btn--tertiary fr-mt-4w" id="generate-new-question-button">
-          Me proposer une nouvelle question
+      <div id="error-message" class="error-message" style="display: none;">
+        <p class="fr-text--sm fr-text--error error-message__text" id="error-message-text">
+          <img src="/icons/error.svg" alt=""/>
+          <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
+        </p>
+
+        <button type="button" class="fr-btn--tertiary" id="switch-to-question-mode-button">
+          Afficher le captcha simplifié
         </button>
       </div>
+    </div>
 
-      <div class="fr-fieldset__element">
-        <div class="fr-btns-group">
-          <button class="fr-btn" type="submit">Créer mon compte</button>
-        </div>
+    <div class="fr-fieldset__element" id="captcha-question">
+      <label class="fr-label" for="captcha-question-input">
+        Quelle est la saison du mois d'avril en Allemagne ?
+        <img src="/mandatory-icon.svg" alt="obligatoire"/>
+      </label>
+      <input class="fr-input" type="text" id="captcha-question-input" title="Saisir la réponse"/>
+
+      <button type="button" class="fr-btn--tertiary fr-mt-4w" id="generate-new-question-button">
+        Me proposer une nouvelle question
+      </button>
+    </div>
+
+    <div class="fr-fieldset__element">
+      <div class="fr-btns-group">
+        <button class="fr-btn" type="submit">Créer mon compte</button>
       </div>
-    </fieldset>
+    </div>
   </form>
 
   <div class="fr-py-5w" id="success-message" style="display: none;">
@@ -272,7 +271,6 @@
       successMessage.style.display = "block";
     });
   });
-
 
 
 </script>
