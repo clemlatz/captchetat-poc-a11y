@@ -52,8 +52,6 @@
         </div>
       </div>
 
-      <button type="button" id="switch-mode-button" class="fr-btn">Changer de mode</button>
-
       <div class="fr-fieldset__element" id="captcha-image">
         <label class="fr-label">
           Reproduire la suite de caractères
@@ -62,17 +60,17 @@
         <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
         <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
         <button id="audio-button" type="button" aria-label="Lire le code du captcha">
-          <img src="/icons/play.png" id="audio-button-image" alt="" width="24">
+          <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
         </button>
 
         <button type="button" id="refreshCaptcha" aria-label="Recharger le captcha">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17 20" fill="none"
-               id="iconReload">
-            <path
-                d="M9.00003 4.0001C11.1 4.0001 13.1 4.8001 14.6 6.3001C17.7 9.4001 17.7 14.5001 14.6 17.6001C12.8 19.5001 10.3 20.2001 7.90003 19.9001L8.40003 17.9001C10.1 18.1001 11.9 17.5001 13.2 16.2001C15.5 13.9001 15.5 10.1001 13.2 7.7001C12.1 6.6001 10.5 6.0001 9.00003 6.0001V10.6001L4.00003 5.6001L9.00003 0.600098V4.0001ZM3.30003 17.6001C0.700029 15.0001 0.300029 11.0001 2.10003 7.9001L3.60003 9.4001C2.50003 11.6001 2.90003 14.4001 4.80003 16.2001C5.30003 16.7001 5.90003 17.1001 6.60003 17.4001L6.00003 19.4001C5.00003 19.0001 4.10003 18.4001 3.30003 17.6001V17.6001Z"
-                fill="black"></path>
-          </svg>
+          <img src="/icons/refresh.svg" alt="" width="24">
         </button>
+
+        <button type="button" id="switch-mode-button" aria-label="Afficher le défi simplifié">
+          <img src="/icons/simplify.svg" alt="" width="24">
+        </button>
+
         <div class="fr-mb-1w">
           <input class="fr-input" id="captcha-image-input" type="text" aria-label="Saisir le captcha"
                  placeholder="Saisir le captcha"/>
@@ -150,12 +148,12 @@
         audio.pause();
         audioPlaying = false;
         audioButton.setAttribute("aria-label", "Lire le code du captcha");
-        audioButtonImage.src = '/icons/play.png';
+        audioButtonImage.src = '/icons/play.svg';
       } else {
         audio.play();
         audioPlaying = true;
         audioButton.setAttribute("aria-label", "Mettre en pause la lecture");
-        audioButtonImage.src = '/icons/pause.png';
+        audioButtonImage.src = '/icons/pause.svg';
       }
     });
   });
