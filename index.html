@@ -66,7 +66,7 @@
         </label>
         <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
         <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
-        <button id="audio-button" type="button" aria-label="Lire le code du captcha">
+        <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha">
           <img src="/icons/play.svg" id="audio-button-image" alt="" width="24">
         </button>
 
@@ -173,7 +173,7 @@
       if (audioPlaying) {
         audio.pause();
         audioPlaying = false;
-        audioButton.setAttribute("aria-label", "Lire le code du captcha");
+        audioButton.setAttribute("aria-label", "Lire en boucle le code du captcha");
         audioButtonImage.src = '/icons/play.svg';
       } else {
         audio.play();
