@@ -60,12 +60,12 @@
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
         <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
-        <img src="captcha-example.png" alt="Exemple de CAPTCHA">
+        <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
         <button id="audio-button" type="button" aria-label="Lire le code du captcha">
           <img src="/icons/play.png" id="audio-button-image" alt="" width="24">
         </button>
 
-        <button type="button" aria-label="Recharger le captcha">
+        <button type="button" id="refreshCaptcha" aria-label="Recharger le captcha">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17 20" fill="none"
                id="iconReload">
             <path
@@ -116,6 +116,15 @@
     captchaQuestion.style.display = "block";
   }
 
+  const btnRefresh = document.getElementById('refreshCaptcha');
+  const imgCaptcha = document.querySelector('#captcha-images-img');
+
+  function switchStyleImage() {
+    const index = Math.floor(Math.random() * 5);
+    imgCaptcha.src = `/captcha-example-${index}.png`;
+  }
+
+  btnRefresh.addEventListener('click', switchStyleImage);
   let captchaMode = "image";
   document.addEventListener('DOMContentLoaded', () => {
 
@@ -151,7 +160,7 @@
     });
   });
 
-  const  subscribeForm = document.getElementById('subscribe-form');
+  const subscribeForm = document.getElementById('subscribe-form');
 
   subscribeForm.addEventListener('submit', (event) => {
     event.preventDefault();
