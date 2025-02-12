@@ -231,13 +231,13 @@
       if (audioPlaying) {
         audio.pause();
         audioPlaying = false;
-        audioButton.setAttribute("aria-label", "Lire en boucle le code du captcha");
+        
         audioButton.setAttribute("title", "Lire en boucle le code du captcha");
         audioButtonImage.src = '/icons/play.svg';
       } else {
         audio.play();
         audioPlaying = true;
-        audioButton.setAttribute("aria-label", "Mettre en pause la lecture");
+       
         audioButton.setAttribute("title", "Mettre en pause la lecture");
         audioButtonImage.src = '/icons/pause.svg';
       }
