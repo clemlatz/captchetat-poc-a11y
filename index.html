@@ -100,6 +100,10 @@
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
         <input class="fr-input" type="text" id="captcha-question-input"/>
+
+        <button type="button" class="fr-btn--tertiary fr-mt-4w" id="generate-new-question-button">
+          Générer une nouvelle question
+        </button>
       </div>
 
       <div class="fr-fieldset__element">
@@ -132,7 +136,7 @@
     const captchaImage = document.getElementById('captcha-image');
     const captchaQuestion = document.getElementById('captcha-question');
     const CaptchaQuestionInput = document.getElementById('captcha-question-input');
-    
+
     captchaImage.style.display = "none";
     captchaQuestion.style.display = "block";
     CaptchaQuestionInput.focus();
@@ -172,6 +176,11 @@
     switchToQuestionModeButton.addEventListener('click', () => {
       switchToQuestionMode();
       captchaMode = "question";
+    });
+
+    const generateNewQuestionButton = document.getElementById('generate-new-question-button');
+    generateNewQuestionButton.addEventListener('click', () => {
+      window.alert('Fonctionnalité non implémentée qui permettra de générer une autre question.');
     });
 
     const audio = document.getElementById('audio-captcha');
