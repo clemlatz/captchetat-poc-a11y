@@ -117,9 +117,15 @@
 
   const btnRefresh = document.getElementById('refreshCaptcha');
   const imgCaptcha = document.querySelector('#captcha-images-img');
-
+  let HistoryIndexCaptcha = 0;
   function switchStyleImage() {
+
     const index = Math.floor(Math.random() * 5);
+    if (index === HistoryIndexCaptcha) {
+      switchStyleImage();
+      return;
+    }
+    HistoryIndexCaptcha = index;
     imgCaptcha.src = `/captcha-example-${index}.png`;
   }
 
