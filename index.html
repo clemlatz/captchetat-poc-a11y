@@ -64,7 +64,7 @@
           Reproduire la suite de caractères du captcha
           <img src="/mandatory-icon.svg" alt="obligatoire"/>
         </label>
-        <audio id="audio-captcha" src="/captcha-example.mp3" loop></audio>
+        <audio id="audio-captcha" src="/captcha-example.mp3"></audio>
         <img src="captcha-example-0.png" id="captcha-images-img" alt="Exemple de CAPTCHA">
 
         <button id="audio-button" type="button" aria-label="Lire en boucle le code du captcha"
@@ -129,6 +129,7 @@
 
 <script>
 
+
   function switchToImageMode() {
     const captchaImage = document.getElementById('captcha-image');
     const captchaQuestion = document.getElementById('captcha-question');
@@ -191,7 +192,13 @@
     const audioButton = document.getElementById('audio-button');
     const audioButtonImage = document.getElementById('audio-button-image');
     let audioPlaying = false;
-
+    audio.addEventListener('ended', () => {
+      setTimeout(() => {
+        if (audioPlaying) {
+          audio.play();
+        }
+      }, 1000); // 1 second delay before replaying
+    });
     audioButton.addEventListener('click', () => {
       if (audioPlaying) {
         audio.pause();
