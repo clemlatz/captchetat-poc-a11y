@@ -109,8 +109,11 @@
   function switchToQuestionMode() {
     const captchaImage = document.getElementById('captcha-image');
     const captchaQuestion = document.getElementById('captcha-question');
+    const CaptchaQuestionInput = document.getElementById('captcha-question-input');
+    
     captchaImage.style.display = "none";
     captchaQuestion.style.display = "block";
+    CaptchaQuestionInput.focus();
   }
 
   const btnRefresh = document.getElementById('refreshCaptcha');
