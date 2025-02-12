@@ -100,8 +100,8 @@
                aria-describedby="error-message-text"/>
       </div>
 
-      <div id="error-message" class="error-message" style="display: none;">
-        <p class="fr-text--sm fr-text--error error-message__text" id="error-message-text">
+      <div id="error-message" class="error-message" role="alert">
+        <p class="fr-text--sm fr-text--error error-message__text" id="error-message-text" style="display: none;">
           <img src="/icons/error.svg" alt=""/>
           <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
         </p>
@@ -252,7 +252,7 @@
         document.getElementById('captcha-question-input');
       const correctAnswer = captchaMode === "image" ? "8J4URZ" : "PRINTEMPS";
 
-      const errorMessage = document.getElementById('error-message');
+      const errorMessage = document.getElementById('error-message-text');
       errorMessage.style.display = "none";
 
       if (captchaInput.value === "") {
