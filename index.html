@@ -105,6 +105,11 @@
       </div>
     </fieldset>
   </form>
+
+  <div class="fr-py-5w" id="success-message" style="display: none;">
+    <h1 class="fr-h1">Inscription</h1>
+    Votre inscription a bien été validée.
+  </div>
 </main>
 
 <script type="module" href="/design-system/dsfr.module.min.js"></script>
@@ -201,7 +206,10 @@
       return;
     }
 
-    alert('Formulaire soumis');
+    const form = document.getElementById('subscribe-form');
+    const successMessage = document.getElementById('success-message');
+    form.style.display = "none";
+    successMessage.style.display = "block";
   });
 
 </script>
