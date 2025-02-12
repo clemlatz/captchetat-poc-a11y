@@ -257,11 +257,13 @@
 
       if (captchaInput.value === "") {
         errorMessage.style.display = "block";
+        captchaInput.focus();
         return;
       }
 
       if (captchaInput.value.toUpperCase() !== correctAnswer) {
         errorMessage.style.display = "block";
+        captchaInput.focus();
         return;
       }
 
