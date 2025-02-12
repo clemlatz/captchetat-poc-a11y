@@ -97,11 +97,11 @@
         </div>
 
         <div class="fr-mb-1w">
-          <input class="fr-input" id="captcha-image-input" type="text" style="text-transform: uppercase;"/>
+          <input class="fr-input" id="captcha-image-input" type="text" style="text-transform: uppercase;" aria-describedby="error-message-text"/>
         </div>
 
         <div id="error-message" class="error-message" style="display: none;">
-          <p class="fr-text--sm fr-text--error error-message__text">
+          <p class="fr-text--sm fr-text--error error-message__text" id="error-message-text">
             <img src="/icons/error.svg" alt=""/>
             <span>La réponse est incorrecte. Veuillez essayer à nouveau.</span>
           </p>
